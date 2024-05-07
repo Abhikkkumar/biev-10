@@ -162,6 +162,7 @@ const UserProfile = () => {
               {userid !== loggedUser._id ? (
                 <>
                   <h1>{user.name}</h1>
+                  {/* {user.name[0].toUpperCase() + user.name.substring(1)} */}
                   <button
                     className="followBtn"
                     onClick={() => {
@@ -172,7 +173,10 @@ const UserProfile = () => {
                   </button>
                 </>
               ) : (
-                <h1>{user.name} (You)</h1>
+                <h1>
+                  {/* {user.name[0].toUpperCase() + user.name.substring(1)} (You) */}
+                  {user.name} (You)
+                </h1>
               )}
             </div>
 
@@ -184,7 +188,8 @@ const UserProfile = () => {
                 }}
                 style={{ cursor: "pointer" }}
               >
-                {user.followers ? user.followers.length : 0} Followers
+                {user.followers ? user.followers.length : 0}
+                <span style={{ color: "#04345c" }}>Followers</span>
               </p>
               <p
                 onClick={(e) => {
@@ -192,7 +197,8 @@ const UserProfile = () => {
                 }}
                 style={{ cursor: "pointer" }}
               >
-                {user.following ? user.following.length : 0} Following
+                {user.following ? user.following.length : 0}
+                <span style={{ color: "#04345c" }}>Following</span>
               </p>
             </div>
           </div>
