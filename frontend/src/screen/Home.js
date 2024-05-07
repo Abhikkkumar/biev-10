@@ -173,7 +173,10 @@ export default function Home() {
                     to={`/profile/${eachPost.postedBy._id}`}
                     style={{ margin: "0 10px" }}
                   >
-                    <h5>{eachPost.postedBy.name}</h5>
+                    <h5>
+                      {eachPost.postedBy.name[0].toUpperCase() +
+                        eachPost.postedBy.name.substring(1)}
+                    </h5>
                   </Link>
                 </div>
 

@@ -4,7 +4,6 @@ import "../css/profile.css";
 import ProfilePic from "../components/ProfilePic";
 
 const Profile = () => {
-  
   const [changePic, setChangePics] = useState(false);
   const [user, setUser] = useState("");
   const [posts, setPosts] = useState([]);
@@ -40,7 +39,11 @@ const Profile = () => {
             onClick={() => {
               changeProfile();
             }}
-            src={user.photo?user.photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAOWugjv2va31k9P7BfE-vQ47mcaMV7idM9g&usqp=CAU"}
+            src={
+              user.photo
+                ? user.photo
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAOWugjv2va31k9P7BfE-vQ47mcaMV7idM9g&usqp=CAU"
+            }
             alt="profile-pic"
           />
         </div>
@@ -50,8 +53,17 @@ const Profile = () => {
           <h1>{JSON.parse(localStorage.getItem("user")).name}</h1>
           <div className="profile-info">
             <p>{posts.length} posts</p>
-            <p onClick={(e)=>{console.log(e.target.innerText.includes("Follower"))}}>{(user.followers )? user.followers.length : 0} Followers</p>
-            <p>{(user.following )? user.following.length: 0} Following</p>
+            <p
+              onClick={(e) => {
+                console.log(e.target.innerText.includes("Follower"));
+              }}
+            >
+              {user.followers ? user.followers.length : 0} Followers
+            </p>
+            <p>
+              {user.following ? user.following.length : 0}{" "}
+              <span style={{ color: "#04345c" }}>Following</span>{" "}
+            </p>
           </div>
         </div>
       </div>
@@ -60,9 +72,7 @@ const Profile = () => {
       {/* Gallery */}
       <div className="gallery">
         {posts.map((eachPost) => {
-          return (
-            <img key={eachPost._id} src={eachPost.photo} alt="posts" />
-          );
+          return <img key={eachPost._id} src={eachPost.photo} alt="posts" />;
         })}
       </div>
       {changePic && <ProfilePic changeProfile={changeProfile} />}

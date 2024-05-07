@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className="footer">
       <p>
-        <span>©</span> 2023 <span>BIEV</span>
+        <span>©</span> 2024 <span>BIEV</span>
       </p>
     </div>
   );

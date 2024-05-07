@@ -5,10 +5,9 @@ import "../css/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
 
-const Navbar = ({ login,searchValue, setShowSearch, setSearchValue }) => {
+const Navbar = ({ login, searchValue, setShowSearch, setSearchValue }) => {
   const navigate = useNavigate();
 
- 
   const { setModalOpen } = useContext(LoginContext);
   const loginStatus = () => {
     const token = localStorage.getItem("jwt");
@@ -20,10 +19,12 @@ const Navbar = ({ login,searchValue, setShowSearch, setSearchValue }) => {
             <input
               type="text"
               value={searchValue}
-              placeholder="Search user by the name"
-              onChange={(e)=>{setSearchValue(e.target.value)}}
+              placeholder="Search"
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+              }}
               onKeyPress={(e) => {
-                if (e.key === 'Enter') setShowSearch(true);;
+                if (e.key === "Enter") setShowSearch(true);
               }}
             />
           </div>
@@ -68,30 +69,28 @@ const Navbar = ({ login,searchValue, setShowSearch, setSearchValue }) => {
     }
   };
   return (
-    <div>
-      <div className="navbar">
-        <div
-          className="n-one"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <img
-            className="insta-logo"
-            src={Logo}
-            alt="logo"
-            style={{ cursor: "pointer" }}
-          />
-          <img
-            className="insta-logo insta-logo-1"
-            src={logo_1}
-            alt="logo"
-            style={{ cursor: "pointer" }}
-          />
-        </div>
-
-        <ul className="nav-list">{loginStatus()}</ul>
+    <div className="navbar">
+      <div
+        className="n-one"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <img
+          className="insta-logo"
+          src={Logo}
+          alt="logo"
+          style={{ cursor: "pointer" }}
+        />
+        <img
+          className=" insta-logo-1"
+          src={logo_1}
+          alt="logo"
+          style={{ cursor: "pointer" }}
+        />
       </div>
+
+      <ul className="nav-list">{loginStatus()}</ul>
     </div>
   );
 };
